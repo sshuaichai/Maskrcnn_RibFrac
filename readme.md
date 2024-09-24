@@ -4,7 +4,7 @@
 
 > 🦴 Rib location combined with rib fracture detection
 
-<img src="maskrcnn_ribfrac/assets/2024-09-24-21-45-13.gif" alt="" width="300" height="auto" />
+<img src="maskrcnn_ribfrac/assets/2024-09-24-21-45-13.gif" alt="" width="500" height="auto" />
 
 We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model. However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this. 🚀
 
