@@ -1,5 +1,12 @@
 # MaskRCNN Rib Fracture Detection
 
+> Rib location combined with rib fracture detection> 
+![2024-09-24-21-34-45.gif](maskrcnn_ribfrac/assets/2024-09-24-21-34-45.gif)
+
+We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model.
+However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this.
+
+
 ## Project Structure
 Maskrcnn_RibFrac\
     ├── backbone : Backbone architecture  
@@ -168,48 +175,16 @@ python run_maskrcnn/validation.py --device cuda --num-classes 1 --data-path <ima
 
 This will generate the [det_record_mAP.txt] and [seg_record_mAP.txt] files.
 
-Taking the maskrcnn-resnet50-fpn model as an example:
+Model training process：
+Bbox：
+![det_metrics_comparison.png](maskrcnn_ribfrac/assets/det_metrics_comparison.png)
+Mask：
+![seg_metrics_comparison.png](maskrcnn_ribfrac/assets/seg_metrics_comparison.png)
 
-```det_record_mAP.txt 示例
-COCO results:
- Average Precision  (AP) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.457
- Average Precision  (AP) @[ IoU=0.10      | area=   all | maxDets=100 ] = 0.782
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.607
- Average Precision  (AP) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.454
- Average Precision  (AP) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.507
- Average Precision  (AP) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = -1.000
- Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=  1 ] = 0.393
- Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets= 10 ] = 0.614
- Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.617
- Average Recall     (AR) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.623
- Average Recall     (AR) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.547
- Average Recall     (AR) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = -1.000
-
-mAP(IoU=0.5) for each category:
- rib_fracture   : 0.6069811695883717
-```
-
-```seg_record_mAP.txt 示例
-COCO results:
- Average Precision  (AP) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.450
- Average Precision  (AP) @[ IoU=0.10      | area=   all | maxDets=100 ] = 0.770
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.617
- Average Precision  (AP) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.441
- Average Precision  (AP) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.588
- Average Precision  (AP) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = -1.000
- Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=  1 ] = 0.383
- Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets= 10 ] = 0.599
- Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.602
- Average Recall     (AR) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.603
- Average Recall     (AR) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.592
- Average Recall     (AR) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = -1.000
-
-mAP(IoU=0.5) for each category:
- rib_fracture   : 0.6173412557748293
-```
-
-Note: We provide the original 2D slices. Readers can directly run the [run_maskrcnn/my_dataset_cocoRib.py] script to view our original data and data augmentation, just by changing the image address. For example:
+Note: We provide the original 2D slices. Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py]and comment out the visualization code to view our original data and data augmentation.You only need to change the image address.
+For example:
 ![visualized_samples_trans](maskrcnn_ribfrac/assets/visualized_samples_trans.png)
+
 
 Reference code： https://github.com/WZMIAOMIAO/deep-learning-for-image-processing and https://github.com/pytorch/vision. 
 Acknowledgements WZMIAOMIAO！
