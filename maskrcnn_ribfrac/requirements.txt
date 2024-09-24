@@ -1,0 +1,15 @@
+torch==2.1.2
+torchvision==0.16.2
+torchaudio==2.1.2
+numpy==1.23.5
+Pillow==9.3.0
+pydicom==2.4.4
+nibabel==5.2.1
+tqdm==4.64.1
+pycocotools==2.0.7
+scikit-image==0.22.0
+pandas==2.2.2
+matplotlib==3.5.1
+SimpleITK==2.4.0
+--extra-index-url https://download.pytorch.org/whl/cu118
+

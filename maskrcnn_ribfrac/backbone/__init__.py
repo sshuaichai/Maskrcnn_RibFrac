@@ -1,0 +1,3 @@
+from .resnet_fpn_model import resnet50_fpn_backbone
+from .resnet_fpn_model import resnet101_fpn_backbone
+from .resnet_fpn_model import resnet152_fpn_backbone

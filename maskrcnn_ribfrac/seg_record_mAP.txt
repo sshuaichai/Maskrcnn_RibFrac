@@ -1,0 +1,16 @@
+COCO results:
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.450
+ Average Precision  (AP) @[ IoU=0.10      | area=   all | maxDets=100 ] = 0.770
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.617
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.441
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.588
+ Average Precision  (AP) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=  1 ] = 0.383
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets= 10 ] = 0.599
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=   all | maxDets=100 ] = 0.602
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area= small | maxDets=100 ] = 0.603
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area=medium | maxDets=100 ] = 0.592
+ Average Recall     (AR) @[ IoU=0.10:0.95 | area= large | maxDets=100 ] = -1.000
+
+mAP(IoU=0.5) for each category:
+ rib_fracture   : 0.6173412557748293
