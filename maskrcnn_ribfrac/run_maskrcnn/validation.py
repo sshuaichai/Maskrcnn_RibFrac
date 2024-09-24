@@ -137,7 +137,7 @@ def main(parser_data):
 
     from maskrcnn_ribfrac.backbone import resnet50_fpn_backbone
     backbone = resnet50_fpn_backbone()
-    # from backbone import resnet101_fpn_backbone
+    # from maskrcnn_ribfrac.backbone import resnet101_fpn_backbone
     # backbone = resnet101_fpn_backbone()
     # from maskrcnn_ribfrac.backbone import resnet152_fpn_backbone
     # backbone = resnet152_fpn_backbone()
