@@ -54,9 +54,9 @@ def create_model(num_classes, load_pretrain_weights=False):
     """
     from maskrcnn_ribfrac.backbone import resnet50_fpn_backbone
     backbone = resnet50_fpn_backbone(pretrain_path="../resnet50.pth", trainable_layers=3)
-    # from backbone import resnet101_fpn_backbone
+    # from maskrcnn_ribfrac.backbone import resnet101_fpn_backbone
     # backbone = resnet101_fpn_backbone(pretrain_path="resnet101.pth", trainable_layers=3)
-    # from backbone import resnet152_fpn_backbone
+    # from maskrcnn_ribfrac.backbone import resnet152_fpn_backbone
     # backbone = resnet152_fpn_backbone(pretrain_path="resnet152.pth", trainable_layers=3)
 
     model = MaskRCNN(backbone, num_classes=num_classes)
