@@ -125,7 +125,7 @@ To train the MaskRCNN_RibFrac model, run the following command in the terminal:
 ```bash
 python run_maskrcnn/train_cocorib.py --data-path <image_path> --output-dir "save_weights_RibFrac" --num-classes 1 --batch_size 16 --epochs 300 --lr 0.01 --momentum 0.9 --weight-decay 1e-4  --validation-frequency 1 --patience 50 --delta 0.001 --lr-scheduler "StepLR" --step-size 50 --lr-gamma 0.33 --amp True
 ```
-This will generate the [save_weights_RibFrac] folder containing det, seg, and tensorboard_logs subfolders to monitor all metrics during the training process.
+This will generate the [save_weights_RibFrac] folder containing det, seg, and tensorboard_logs subfolders to monitor all metrics during the training process.📈
 
 
 If you want to train a different model architecture, find the corresponding architecture and modify it (prediction and evaluation scripts are the same). We have configured all architectures; you only need to comment out the unused architectures and select the desired one. For example:
