@@ -209,7 +209,7 @@ mAP(IoU=0.5) for each category:
 ```
 
 Note: We provide the original 2D slices. Readers can directly run the [run_maskrcnn/my_dataset_cocoRib.py] script to view our original data and data augmentation, just by changing the image address. For example:
-![visualized_samples_trans](maskrcnn_ribFrac/assets/visualized_samples_trans.png)
+![visualized_samples_trans](maskrcnn_ribfrac/assets/visualized_samples_trans.png)
 
 Reference code： https://github.com/WZMIAOMIAO/deep-learning-for-image-processing and https://github.com/pytorch/vision. 
 Acknowledgements WZMIAOMIAO！
