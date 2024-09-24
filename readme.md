@@ -1,16 +1,14 @@
-# MaskRCNN Rib Fracture Detection
+# 🌟 MaskRCNN Rib Fracture Detection
 
-<img src="maskrcnn_ribfrac/assets/title.png" alt="" width="600" height="" />
+<img src="maskrcnn_ribfrac/assets/title.png" alt="" width="1200" height="" />
 
-> Rib location combined with rib fracture detection
+> 🦴 Rib location combined with rib fracture detection
 
 <img src="maskrcnn_ribfrac/assets/2024-09-24-21-45-13.gif" alt="" width="300" height="auto" />
 
-We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model.
-However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this.
+We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model. However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this. 🚀
 
-
-## Project Structure
+## 📁 Project Structure
 Maskrcnn_RibFrac\
     ├── backbone : Backbone architecture  
     ├── data : Data directory  
@@ -19,26 +17,25 @@ Maskrcnn_RibFrac\
     └── utils : Utility functions  
 
 First, create and activate a virtual environment:  
-It is recommended to use a conda environment with `python3.9`.
+It is recommended to use a conda environment with `python3.9`. 🐍
 
-
-# Usage
-## Install Required Packages
+# 🔧 Usage
+## 📦 Install Required Packages
 First, install required packages listed in `requirements.txt` using pip:
 
 ```bash
-git clone 
+git clone https://github.com/sshuaichai/Maskrcnn_RibFrac.git
 cd maskrcnn_ribfrac
 pip install -r requirements.txt
 ```
 
-# Download Dataset
+# 📥 Download Dataset
 We use a large-scale rib fracture CT dataset, named the RibFrac dataset, as a benchmark for developing rib fracture detection, segmentation, and classification algorithms. 
 After free registration, you can access the public part of the RibFrac dataset through the RibFrac Challenge website https://ribfrac.grand-challenge.org/dataset/, which is the official challenge of MICCAI 2020. 
 The public dataset in this document is in 2D format, processed from the official 3D format. 
 Refer to the RibFrac Challenge website https://ribfrac.grand-challenge.org/tasks/ for more details. 
 
-## Prepare the dataset
+## 📂 Prepare the dataset
 
 Please first download the RibFrac public dataset to the [data] folder, and place the images and labels in a ratio of 0.9:0.1 (that is, the first 450 are for training and the last 50 are for verification). 
 The format is as follows:
@@ -84,7 +81,7 @@ b. Generate 2D slices
 ```bash
 python data/Ribfrac_dataset.py --data-path data/Dataset510_RibFrac_preprocess --output-dir data/COCO_Rib2020_Ribfrac_v2
 ```
-Some Warning: will be printed during the run. Ignore it. This is because we are checking the data and deleting the mismatched slices and label information.
+Some Warning⚠️: will be printed during the run. Ignore it. This is because we are checking the data and deleting the mismatched slices and label information.
 
 This will generate our rib fracture 2d slices under our [data] folder, named COCO_Rib2020_Ribfrac_v2, with the following structure:
 
@@ -112,7 +109,7 @@ Link: https://pan.baidu.com/s/1Z409IsidAG3-4p0sqdhbtA
 Extraction Code: RibF
 ```
 
-## Download Pytorch Pre-trained Weights
+## 🏋️‍♂️ Download Pytorch Pre-trained Weights
 
 If you plan to use transfer learning to train the model, please download the Pytorch pre-trained weight file to the maskrcnn_ribfrac directory
 
@@ -121,7 +118,7 @@ If you plan to use transfer learning to train the model, please download the Pyt
 - `resnet152.pth` imagenet weights url: "https://download.pytorch.org/models/resnet152-394f9c45.pth"
 - `maskrcnn_resnet50_fpn_coco.pth` weights url: "https://download.pytorch.org/models/maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth"
 
-## Train the Model
+## 🚀 Train the Model
 
 To train the MaskRCNN_RibFrac model, run the following command in the terminal:
 
@@ -143,7 +140,7 @@ backbone = resnet50_fpn_backbone()
 # backbone = resnet152_fpn_backbone()
 ```
 
-## Make Predictions
+## 🔍 Make Predictions
 
 You can directly download our model weights for inference：
 
