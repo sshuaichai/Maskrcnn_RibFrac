@@ -1,4 +1,4 @@
-# 🌟 MaskRCNN Rib Fracture Detection And Segmentation
+# 🌟Rib Fracture Detection And Segmentation - MaskRCNN
 
 <img src="maskrcnn_ribfrac/assets/title.png" alt="" width="1200" height="" />
 
