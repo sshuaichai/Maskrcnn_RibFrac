@@ -134,7 +134,7 @@ If you want to train a different model architecture, find the corresponding arch
 from maskrcnn_ribfrac.backbone import resnet50_fpn_backbone
 
 backbone = resnet50_fpn_backbone()
-# from backbone import resnet101_fpn_backbone
+# from maskrcnn_ribfrac.backbone import resnet101_fpn_backbone
 # backbone = resnet101_fpn_backbone()
 # from maskrcnn_ribfrac.backbone import resnet152_fpn_backbone
 # backbone = resnet152_fpn_backbone()
