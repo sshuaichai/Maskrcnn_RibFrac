@@ -183,7 +183,7 @@ Mask：
 
 Note: We provide the original 2D slices. Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py]and comment out the visualization code to view our original data and data augmentation.You only need to change the image address.
 For example:
-![visualized_samples_trans](maskrcnn_ribfrac/assets/visualized_samples_trans.jpg)
+![visualized_samples_trans](maskrcnn_ribfrac/assets/visualized_samples.png)
 
 
 
