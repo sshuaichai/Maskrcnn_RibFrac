@@ -6,7 +6,7 @@
 
 <img src="maskrcnn_ribfrac/assets/Github.gif" alt="" width="500" height="auto" />
 
-We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model. However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this. 🚀
+We have completed the prediction of fractures in the ribs. Through the fusion prediction of the positioning model and the fracture model, we have achieved good results. However, the rib areas on both sides of the spine cannot be well identified and detected. We will further improve it. 🚀
 
 ## 📁 Project Structure
 Maskrcnn_RibFrac\
