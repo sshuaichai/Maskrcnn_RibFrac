@@ -189,7 +189,7 @@ if __name__ == "__main__":
     parser.add_argument('--weights-path', default=r"", type=str, help='training weights')
     parser.add_argument('--batch-size', default=1, type=int, metavar='N',
                         help='batch size when validation.')
-    parser.add_argument('--label-json-path', type=str, default="cocorib_indices.json")
+    parser.add_argument('--label-json-path', type=str, default="Frac1.json")
 
     args = parser.parse_args()
 
