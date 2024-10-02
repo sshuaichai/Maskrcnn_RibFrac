@@ -1,4 +1,4 @@
-## 🌟Rib Fracture Detection And Segmentation - MaskRCNN
+# 🌟 MaskRCNN Rib Fracture Detection And Segmentation
 
 <img src="maskrcnn_ribfrac/assets/title.png" alt="" width="1200" height="" />
 
@@ -6,7 +6,7 @@
 
 <img src="maskrcnn_ribfrac/assets/Github.gif" alt="" width="500" height="auto" />
 
-We have completed the positioning of fractured ribs and achieved good results through the fusion prediction of the positioning model and the fracture model. However, the rib areas on both sides of the spine cannot be well identified and detected, and we will further improve it. 🚀
+We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model. However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this. 🚀
 
 ## 📁 Project Structure
 Maskrcnn_RibFrac\
@@ -142,27 +142,11 @@ backbone = resnet50_fpn_backbone()
 
 ## 🔍 Make Predictions
 
-You can directly download our model weights for inference：
-
-MaksR-cnn50 model weights: `RibFrac50.pth`
-Link：https://pan.baidu.com/s/1GNxUEMgthdcKjkp-_5byjQ
-Extraction Code：RibF
-
-MaksR-cnn101 model weights: `RibFrac101.pth`
-Link：https://pan.baidu.com/s/1hGyJop5q6OwFj9zpH2tVag 
-Extraction Code：RibF
-
-MaksR-cnn152 model weights: `RibFrac152.pth`
-Link：https://pan.baidu.com/s/15Yxefnj5BUC5gfHIRwy9Dg 
-Extraction Code：RibF
-
-Use the following command to make predictions:
-
 ```bash
-python run_maskrcnn/predict_RIBFrac.py --img_folder /path/to/input/images --output_folder /path/to/output --label_json_path cocorib_indices.json --model_id maskrcn152 --save_format jpg
+python run_maskrcnn/predict_RIBFrac.py --img_folder /path/to/input/images --output_folder /path/to/output --label_json_path Frac1.json --model_id maskrcn152 --save_format jpg
 ```
-For example: `--file_type dicom` or `--file_type nii` to predict different image formats.
-In the prediction file, we use 0.3 as the threshold for object detection because it filters out very low probability objects, retaining better results.
+
+In the prediction file, we use 0.3 or 0.5 as the threshold for object detection because it filters out very low probability objects, retaining better results.
 
 
 ## Model Evaluation
@@ -170,7 +154,7 @@ In the prediction file, we use 0.3 as the threshold for object detection because
 The run_maskrcnn/validation.py script is mainly used to evaluate the performance of the Mask R-CNN model on a COCO format dataset. By running this script, evaluation metrics such as mAP (mean Average Precision) can be generated, and the results will be saved to a text file. First, generate the det_results.json and seg_results.json files, then use the following command for evaluation:
 
 ```bash
-python run_maskrcnn/validation.py --device cuda --num-classes 1 --data-path <image_path>  --weights-path <weights_path>  --label-json-path ./data/cocorib_indices.json --batch-size 1
+python run_maskrcnn/validation.py --device cuda --num-classes 1 --data-path <image_path>  --weights-path <weights_path>  --label-json-path path/to/Frac1.json --batch-size 1
 ```
 
 This will generate the [det_record_mAP.txt] and [seg_record_mAP.txt] files.
@@ -183,9 +167,8 @@ Mask：
 
 Note: We provide the original 2D slices. Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py]and comment out the visualization code to view our original data and data augmentation.You only need to change the image address.
 For example:
-![visualized_samples_trans](maskrcnn_ribfrac/assets/visualized_samples.png)
-
+![visualized_samples.png](maskrcnn_ribfrac/assets/visualized_samples.png)
 
 
 Reference code： https://github.com/WZMIAOMIAO/deep-learning-for-image-processing and https://github.com/pytorch/vision. 
-Acknowledgements WZMIAOMIAO！
+Acknowledgements WZMIAOMIAO.
