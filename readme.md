@@ -102,13 +102,6 @@ COCO_Rib2020_Ribfrac_v2/
 
 In this example, `train` is a slice of the training set, `val` is a slice of the validation set, and the `annotations` list contains annotation information.
 
-If you would like to use our data sets directly in 2D format, please download them to the [data] folder:
-
-```md
-Link: https://pan.baidu.com/s/1Z409IsidAG3-4p0sqdhbtA 
-Extraction Code: RibF
-```
-
 ## 🏋️‍♂️ Download Pytorch Pre-trained Weights
 
 If you plan to use transfer learning to train the model, please download the Pytorch pre-trained weight file to the maskrcnn_ribfrac directory
