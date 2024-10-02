@@ -170,7 +170,7 @@ class CocoDetection(data.Dataset):
 # # Load category index
 # category_index = {}
 # try:
-#     json_file = open('..\cocorib_indices.json', 'r')
+#     json_file = open('Frac1.json', 'r')
 #     category_index = json.load(json_file)
 # except Exception as e:
 #     print(e)
