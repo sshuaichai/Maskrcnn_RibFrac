@@ -158,10 +158,10 @@ Bbox：
 Mask：
 ![seg_metrics_comparison.png](maskrcnn_ribfrac/assets/seg_metrics_comparison.png)
 
-Note: We provide the original 2D slices. Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py]and comment out the visualization code to view our original data and data augmentation.You only need to change the image address.
+> Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py]and comment out the `visualization code to view our original data and data augmentation.You only need to change the image address.
 For example:
 ![visualized_samples.png](maskrcnn_ribfrac/assets/visualized_samples.png)
 
 
-Reference code： https://github.com/WZMIAOMIAO/deep-learning-for-image-processing and https://github.com/pytorch/vision. 
+Reference code： https://github.com/WZMIAOMIAO/deep-learning-for-image-processing/tree/master/pytorch_object_detection/mask_rcnn and https://github.com/pytorch/vision. 
 Acknowledgements WZMIAOMIAO.
