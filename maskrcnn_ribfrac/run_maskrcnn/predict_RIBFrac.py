@@ -31,13 +31,13 @@ def load_weights(model, model_id):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Predict DICOM or NIfTI images with Mask R-CNN")
+    parser = argparse.ArgumentParser(description="Predict DICOM or 2D images with Mask R-CNN")
     parser.add_argument('--num_classes', type=int, default=1, help='Number of classes')
     parser.add_argument('--box_thresh', type=float, default=0.5, help='Box score threshold')
     parser.add_argument('--model_id', type=str, default="maskrcn152", help='Model identifier')
     parser.add_argument('--img_folder', type=str, default=r"", help='Path to input images')
     parser.add_argument('--output_folder', type=str,default=r"",  help='Path to save output')
-    parser.add_argument('--label_json_path', type=str, default='cocorib_indices.json', help='Path to label JSON')
+    parser.add_argument('--label_json_path', type=str, default='Frac1.json', help='Path to label JSON')
     parser.add_argument('--save_format', type=str, choices=['dicom', 'jpg'], default='jpg', help='Output format')
 
     args = parser.parse_args()
