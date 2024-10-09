@@ -40,10 +40,10 @@ Refer to the RibFrac Challenge website https://ribfrac.grand-challenge.org/tasks
 
 ### 🥳 2. External test set ! 
 
-秉承开源精神，促进医学共同进步的目的。我们提供了全新的外部测试数据，包含132名患者，1132处骨折！
 Adhering to the spirit of open source and promoting the common progress of medicine, we provide brand new external test data, including 132 patients and 1132 fractures! 
-据我们所知，这是目前继RibFrac 2020 Challenge 之后公开的第二大骨折数据集。
-As far as we know, this is 😃 the second largest fracture dataset publicly available after RibFrac2020Challenge.
+This is a useful addition to the fracture dataset following the RibFrac2020Challenge.
+For specific fracture locations and information, please refer to our paper ' ... ' 📃.
+
 File name : Dataset132_FracTest.zip
 Link up ：https://pan.baidu.com/s/1rvkrzdZW8fPHBFmJL3jPTQ 
 code ：RibF
