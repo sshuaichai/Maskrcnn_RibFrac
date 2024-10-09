@@ -63,9 +63,9 @@ def create_model(num_classes, load_pretrain_weights=False):
 
     - conv1: The original convolution layer.
     - layer1, layer2, layer3, layer4: These are subsequent residual modules, each containing multiple convolutional layers.
-    When you set trainable_layers=3, it usually means the following: layer1 and layer2 are frozen and do not participate in training, and the parameters of these layers remain the pre-trained weights.
-    layer3 and layer4 and subsequent layers (for example, FPN or RPN layers) are trainable, i.e. the weights of these layers are updated based on data for new tasks.
-
+    When set trainable_layers=3: conv1 and layer1 are frozen and the weights are not updated. layer2, layer3, and layer4 are trainable layers, and the weights of these layers are updated during training.
+    trainable_layers=3 means that all layers are trainable starting from the third layer in the backbone network (layer2, layer3, and layer4). The goal of this setup is to balance the need to leverage pre-training weights with fine-tuning for new tasks.
+   
     Why only train the last three layers?
     1.Transfer learning efficiency: Freezing the weights of the first few layers can take advantage of the common features they learn, such as edges, textures, shapes, etc., that are common to most visual tasks.
     2.Reduce overfitting: By reducing the number of parameters that need to be trained, the risk of overfitting is reduced, especially when the training data is small.
