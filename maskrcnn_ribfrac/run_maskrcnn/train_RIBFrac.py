@@ -15,6 +15,9 @@ from torchvision.transforms import InterpolationMode
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 class EarlyStopping:
+    """
+    Early stopping the training if validation loss doesn't improve after a given patience.'
+    """
     def __init__(self, patience=7, verbose=False, delta=0, trace_func=print):
         self.patience = patience
         self.verbose = verbose
@@ -39,6 +42,9 @@ class EarlyStopping:
             self.epochs_no_improve = 0
 
 def setup_seed(seed):
+    """
+    Sets seed for reproducibility.
+    """
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     np.random.seed(seed)
@@ -51,6 +57,19 @@ def create_model(num_classes, load_pretrain_weights=False):
     resnet50 imagenet weights url:"https://download.pytorch.org/models/resnet50-0676ba61.pth"
     resnet101 imagenet weights url: "https://download.pytorch.org/models/resnet101-63fe2227.pth"
     resnet152 imagenet weights url: "https://download.pytorch.org/models/resnet152-394f9c45.pth"
+
+    Freeze one part of the backbone network and train only a few modules at the top to fine-tune.
+    The trainable_layers=3 parameter does mean that only the last three layers of the backbone network (ResNet-50) are trained.
+
+    - conv1: The original convolution layer.
+    - layer1, layer2, layer3, layer4: These are subsequent residual modules, each containing multiple convolutional layers.
+    When you set trainable_layers=3, it usually means the following: layer1 and layer2 are frozen and do not participate in training, and the parameters of these layers remain the pre-trained weights.
+    layer3 and layer4 and subsequent layers (for example, FPN or RPN layers) are trainable, i.e. the weights of these layers are updated based on data for new tasks.
+
+    Why only train the last three layers?
+    1.Transfer learning efficiency: Freezing the weights of the first few layers can take advantage of the common features they learn, such as edges, textures, shapes, etc., that are common to most visual tasks.
+    2.Reduce overfitting: By reducing the number of parameters that need to be trained, the risk of overfitting is reduced, especially when the training data is small.
+    3.Accelerated training: Reduced computational effort makes model training faster because only a few parameters need to be updated.
     """
     from maskrcnn_ribfrac.backbone import resnet50_fpn_backbone
     backbone = resnet50_fpn_backbone(pretrain_path="../resnet50.pth", trainable_layers=3)
@@ -60,6 +79,9 @@ def create_model(num_classes, load_pretrain_weights=False):
     # backbone = resnet152_fpn_backbone(pretrain_path="resnet152.pth", trainable_layers=3)
 
     model = MaskRCNN(backbone, num_classes=num_classes)
+
+    # Further fine-tuning：Load the weights of the complete MaskR-CNN model trained on the COCO dataset.
+    # Since pytorch does not provide pre-trained weights for maskrcnn101 and 152, you can simply comment out this part of the code when training 101 and 152 weights, which does not delay training.
     if load_pretrain_weights:
         # maskrcnn_resnet50_fpn_coco.pth weights url: "https://download.pytorch.org/models/maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth"
         weights_path = "../maskrcnn_resnet50_fpn_coco.pth"
@@ -78,6 +100,8 @@ def create_model(num_classes, load_pretrain_weights=False):
             print(f"Missing keys: {missing_keys}")
         if unexpected_keys:
             print(f"Unexpected keys: {unexpected_keys}")
+    # Let's comment it out here
+
     return model
 
 
@@ -203,7 +227,7 @@ def main(args):
 
     for epoch in range(args.start_epoch, args.epochs):
         mean_loss, lr, losses = utils.train_one_epoch(model, optimizer, train_data_loader,
-                                              device, epoch, print_freq=500,
+                                              device, epoch, print_freq=300,
                                               warmup=True, scaler=scaler)
 
         train_loss.append(mean_loss.item())
