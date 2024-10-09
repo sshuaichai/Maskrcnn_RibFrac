@@ -30,10 +30,25 @@ pip install -r requirements.txt
 ```
 
 # 📥 Download Dataset
+
+### 📰 1.Public Datasets 
+
 We use a large-scale rib fracture CT dataset, named the RibFrac dataset, as a benchmark for developing rib fracture detection, segmentation, and classification algorithms. 
 After free registration, you can access the public part of the RibFrac dataset through the RibFrac Challenge website https://ribfrac.grand-challenge.org/dataset/, which is the official challenge of MICCAI 2020. 
 The public dataset in this document is in 2D format, processed from the official 3D format. 
 Refer to the RibFrac Challenge website https://ribfrac.grand-challenge.org/tasks/ for more details. 
+
+### 🥳 2. External test set ! 
+
+秉承开源精神，促进医学共同进步的目的。我们提供了全新的外部测试数据，包含132名患者，1132处骨折！
+Adhering to the spirit of open source and promoting the common progress of medicine, we provide brand new external test data, including 132 patients and 1132 fractures! 
+据我们所知，这是目前继RibFrac 2020 Challenge 之后公开的第二大骨折数据集。
+As far as we know, this is 😃 the second largest fracture dataset publicly available after RibFrac2020Challenge.
+File name : Dataset132_FracTest.zip
+Link up ：https://pan.baidu.com/s/1rvkrzdZW8fPHBFmJL3jPTQ 
+code ：RibF
+
+Note: Please cite our paper when using the data.
 
 ## 📂 Prepare the dataset
 
@@ -100,6 +115,11 @@ COCO_Rib2020_Ribfrac_v2/
     └── instances_val.json
 ```
 
+If you find it troublesome and want to use our data directly, we provide a link to Baidu Cloud, just download it:
+File name: COCO_Rib2020_Ribfrac_v2.zip
+link ：https://pan.baidu.com/s/1P1j3QnwzMS2tUTiE65Idhg 
+code：RibF
+
 In this example, `train` is a slice of the training set, `val` is a slice of the validation set, and the `annotations` list contains annotation information.
 
 ## 🏋️‍♂️ Download Pytorch Pre-trained Weights
@@ -116,7 +136,7 @@ If you plan to use transfer learning to train the model, please download the Pyt
 To train the MaskRCNN_RibFrac model, run the following command in the terminal:
 
 ```bash
-python run_maskrcnn/train_cocorib.py --data-path <image_path> --output-dir "save_weights_RibFrac" --num-classes 1 --batch_size 16 --epochs 300 --lr 0.01 --momentum 0.9 --weight-decay 1e-4  --validation-frequency 1 --patience 50 --delta 0.001 --lr-scheduler "StepLR" --step-size 50 --lr-gamma 0.33 --amp True
+python run_maskrcnn/train_RIBFrac.py --data-path <image_path> --output-dir "save_weights_RibFrac" --num-classes 1 --batch_size 16 --epochs 300 --lr 0.01 --momentum 0.9 --weight-decay 1e-4  --validation-frequency 1 --patience 50 --delta 0.001 --lr-scheduler "StepLR" --step-size 50 --lr-gamma 0.33 --amp True
 ```
 This will generate the [save_weights_RibFrac] folder containing det, seg, and tensorboard_logs subfolders to monitor all metrics during the training process.📈
 
@@ -135,6 +155,21 @@ backbone = resnet50_fpn_backbone()
 
 ## 🔍 Make Predictions
 
+You can also directly download the weight file we have trained for prediction.
+We provide three models of fracture architecture:
+
+Mask R-CNN 50 ：RibFrac50.pth
+link：https://pan.baidu.com/s/1htUIiU_tZkUOUzd51T-AXQ 
+code：RibF
+
+Mask R-CNN 101 ：RibFrac101.pth
+link：https://pan.baidu.com/s/1I7wIVtjGdZOfgeFmnnbriA 
+code：RibF
+
+Mask R-CNN 152 ：RibFrac152.pth
+link：https://pan.baidu.com/s/1pQdF0rllrIhQHEuf1LZepw 
+code：RibF
+
 ```bash
 python run_maskrcnn/predict_RIBFrac.py --img_folder /path/to/input/images --output_folder /path/to/output --label_json_path Frac1.json --model_id maskrcn152 --save_format jpg
 ```
@@ -144,21 +179,24 @@ In the prediction file, we use 0.3 or 0.5 as the threshold for object detection 
 
 ## Model Evaluation
 
-The run_maskrcnn/validation.py script is mainly used to evaluate the performance of the Mask R-CNN model on a COCO format dataset. By running this script, evaluation metrics such as mAP (mean Average Precision) can be generated, and the results will be saved to a text file. First, generate the det_results.json and seg_results.json files, then use the following command for evaluation:
+The run_maskrcnn/validation_RIBFrac.py script is mainly used to evaluate the performance of the Mask R-CNN model on a COCO format dataset. By running this script, evaluation metrics such as mAP (mean Average Precision) can be generated, and the results will be saved to a text file. First, generate the det_results.json and seg_results.json files, then use the following command for evaluation:
 
 ```bash
-python run_maskrcnn/validation.py --device cuda --num-classes 1 --data-path <image_path>  --weights-path <weights_path>  --label-json-path path/to/Frac1.json --batch-size 1
+python run_maskrcnn/validation_RIBFrac.py --device cuda --num-classes 1 --data-path <image_path>  --weights-path <weights_path>  --label-json-path path/to/Frac1.json --batch-size 1
 ```
 
 This will generate the [det_record_mAP.txt] and [seg_record_mAP.txt] files.
 
 Model training process：
 Bbox：
+
 ![det_metrics_comparison.png](maskrcnn_ribfrac/assets/det_metrics_comparison.png)
+
 Mask：
+
 ![seg_metrics_comparison.png](maskrcnn_ribfrac/assets/seg_metrics_comparison.png)
 
-> Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py]and comment out the `visualization code to view our original data and data augmentation.You only need to change the image address.
+> Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py] and comment out the `visualization code to view our original data and data augmentation.You only need to change the image address.
 For example:
 ![visualized_samples.png](maskrcnn_ribfrac/assets/visualized_samples.png)
 
