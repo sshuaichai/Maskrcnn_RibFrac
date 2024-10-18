@@ -18,13 +18,6 @@ class Compose:
             image, target = t(image, target)
         return image, target
 
-# class ToTensor(object):
-#     """将PIL图像转为Tensor"""
-#     def __call__(self, image, target):
-#         image = F.to_tensor(image)
-#         return image, target
-
-
 class ToTensor(nn.Module):
     """将PIL图像转换为Tensor。"""
     def forward(
