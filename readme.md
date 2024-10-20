@@ -38,7 +38,7 @@ Regarding external test datasets, if necessary, please contact the corresponding
 
 ## 📂 Prepare the dataset
 
-Please first download the RibFrac public dataset to the [data] folder, and place the images and labels in a ratio of 0.9:0.1 (that is, the first 450 are for training and the last 50 are for verification). 
+Please first download the RibFrac public dataset to the [data] folder, and place the images and labels in a ratio of 9:1 (that is, the first 450 are for training and the last 50 are for verification). 
 The format is as follows:
 
 ```md
