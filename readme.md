@@ -38,7 +38,7 @@ After free registration, you can access the public part of the RibFrac dataset t
 The public dataset in this document is in 2D format, processed from the official 3D format. 
 Refer to the RibFrac Challenge website https://ribfrac.grand-challenge.org/tasks/ for more details. 
 
-### 2. External test set ! 
+### 2. External test set 
 
 If necessary, please contact the corresponding author.
 
