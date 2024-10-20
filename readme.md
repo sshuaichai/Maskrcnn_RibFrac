@@ -42,7 +42,6 @@ Refer to the RibFrac Challenge website https://ribfrac.grand-challenge.org/tasks
 
 If necessary, please contact the corresponding author.
 
-
 ## 📂 Prepare the dataset
 
 Please first download the RibFrac public dataset to the [data] folder, and place the images and labels in a ratio of 0.9:0.1 (that is, the first 450 are for training and the last 50 are for verification). 
