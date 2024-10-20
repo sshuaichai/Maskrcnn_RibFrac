@@ -154,9 +154,9 @@ python run_maskrcnn/validation_RIBFrac.py --device cuda --num-classes 1 --data-p
 This will generate the [det_record_mAP.txt] and [seg_record_mAP.txt] files.
 
 Model training process：
-Bbox：
+- Bbox：
 ![det_metrics_comparison.png](maskrcnn_ribfrac/assets/det_metrics_comparison.png)
-Mask：
+- Mask：
 ![seg_metrics_comparison.png](maskrcnn_ribfrac/assets/seg_metrics_comparison.png)
 
 > Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py]and comment out the `visualization code to view our original data and data augmentation.You only need to change the image address.
