@@ -44,10 +44,6 @@ Adhering to the spirit of open source and promoting the common progress of medic
 This is a useful addition to the fracture dataset following the RibFrac2020Challenge.
 For specific fracture locations and information, please refer to our paper ' ... ' 📃.
 
-File name : Dataset132_FracTest.zip
-Link up ：https://pan.baidu.com/s/1rvkrzdZW8fPHBFmJL3jPTQ 
-code ：RibF
-
 Note: Please cite our paper when using the data.
 
 ## 📂 Prepare the dataset
