@@ -30,17 +30,10 @@ pip install -r requirements.txt
 ```
 
 # 📥 Download Dataset
-
-### 📰 1.Public Datasets 
-
 We use a large-scale rib fracture CT dataset, named the RibFrac dataset, as a benchmark for developing rib fracture detection, segmentation, and classification algorithms. 
 After free registration, you can access the public part of the RibFrac dataset through the RibFrac Challenge website https://ribfrac.grand-challenge.org/dataset/, which is the official challenge of MICCAI 2020. 
 The public dataset in this document is in 2D format, processed from the official 3D format. 
 Refer to the RibFrac Challenge website https://ribfrac.grand-challenge.org/tasks/ for more details. 
-
-### 2. External test set 
-
-If necessary, please contact the corresponding author.
 
 ## 📂 Prepare the dataset
 
@@ -107,11 +100,6 @@ COCO_Rib2020_Ribfrac_v2/
     └── instances_val.json
 ```
 
-If you find it troublesome and want to use our data directly, we provide a link to Baidu Cloud, just download it:
-File name: COCO_Rib2020_Ribfrac_v2.zip
-link ：https://pan.baidu.com/s/1P1j3QnwzMS2tUTiE65Idhg 
-code：RibF
-
 In this example, `train` is a slice of the training set, `val` is a slice of the validation set, and the `annotations` list contains annotation information.
 
 ## 🏋️‍♂️ Download Pytorch Pre-trained Weights
@@ -147,21 +135,6 @@ backbone = resnet50_fpn_backbone()
 
 ## 🔍 Make Predictions
 
-You can also directly download the weight file we have trained for prediction.
-We provide three models of fracture architecture:
-
-Mask R-CNN 50 ：RibFrac50.pth
-link：https://pan.baidu.com/s/1htUIiU_tZkUOUzd51T-AXQ 
-code：RibF
-
-Mask R-CNN 101 ：RibFrac101.pth
-link：https://pan.baidu.com/s/1I7wIVtjGdZOfgeFmnnbriA 
-code：RibF
-
-Mask R-CNN 152 ：RibFrac152.pth
-link：https://pan.baidu.com/s/1pQdF0rllrIhQHEuf1LZepw 
-code：RibF
-
 ```bash
 python run_maskrcnn/predict_RIBFrac.py --img_folder /path/to/input/images --output_folder /path/to/output --label_json_path Frac1.json --model_id maskrcn152 --save_format jpg
 ```
@@ -181,14 +154,11 @@ This will generate the [det_record_mAP.txt] and [seg_record_mAP.txt] files.
 
 Model training process：
 Bbox：
-
 ![det_metrics_comparison.png](maskrcnn_ribfrac/assets/det_metrics_comparison.png)
-
 Mask：
-
 ![seg_metrics_comparison.png](maskrcnn_ribfrac/assets/seg_metrics_comparison.png)
 
-> Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py] and comment out the `visualization code to view our original data and data augmentation.You only need to change the image address.
+> Readers can view the data loading script [run_maskrcnn/my_dataset_cocoRib.py]and comment out the `visualization code to view our original data and data augmentation.You only need to change the image address.
 For example:
 ![visualized_samples.png](maskrcnn_ribfrac/assets/visualized_samples.png)
 
