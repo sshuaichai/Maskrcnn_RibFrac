@@ -38,13 +38,10 @@ After free registration, you can access the public part of the RibFrac dataset t
 The public dataset in this document is in 2D format, processed from the official 3D format. 
 Refer to the RibFrac Challenge website https://ribfrac.grand-challenge.org/tasks/ for more details. 
 
-### 🥳 2. External test set ! 
+### 2. External test set ! 
 
-Adhering to the spirit of open source and promoting the common progress of medicine, we provide brand new external test data, including 132 patients and 1132 fractures! 
-This is a useful addition to the fracture dataset following the RibFrac2020Challenge.
-For specific fracture locations and information, please refer to our paper ' ... ' 📃.
+If necessary, please contact the corresponding author.
 
-Note: Please cite our paper when using the data.
 
 ## 📂 Prepare the dataset
 
