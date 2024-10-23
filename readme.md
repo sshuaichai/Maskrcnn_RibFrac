@@ -163,5 +163,6 @@ Model training process：
 For example:
 ![visualized_samples.png](maskrcnn_ribfrac/assets/visualized_samples.png)
 
+---
 
-Reference code： https://github.com/WZMIAOMIAO/deep-learning-for-image-processing/tree/master/pytorch_object_detection/mask_rcnn
+** Reference code： https://github.com/WZMIAOMIAO/deep-learning-for-image-processing/tree/master/pytorch_object_detection/mask_rcnn **
