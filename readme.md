@@ -2,9 +2,15 @@
 
 <img src="maskrcnn_ribfrac/assets/title.png" alt="" width="1200" height="" />
 
-> 🦴 Rib location combined with rib fracture detection
+> 🦴 Rib Location Combined with Rib Fracture Detection
 
-<img src="maskrcnn_ribfrac/assets/Github.gif" alt="" width="500" height="auto" />
+<img src="maskrcnn_ribfrac/assets/Github.gif" alt="Rib Fracture Detection Demo" width="500" height="auto" />
+
+# Complete Project Demo
+
+Click the link below to watch the video demonstration of rib location and rib fracture detection:
+
+[Watch Video Demonstration](https://sshuaichai.github.io/Maskrcnn_RibFrac/maskrcnn_ribfrac/assets/index.html)
 
 We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model. However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this. 🚀
 
