@@ -6,7 +6,7 @@
 
 <img src="maskrcnn_ribfrac/assets/Github.gif" alt="Rib Fracture Detection Demo" width="500" height="auto" />
 
-# Complete Project Demo
+> ▶️ Complete Project Demo
 
 Click the link below to watch the video demonstration of rib location and rib fracture detection:
 
