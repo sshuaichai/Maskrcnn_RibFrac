@@ -12,7 +12,7 @@ Click the link below to watch the video demonstration of rib location and rib fr
 
 [Watch Video Demonstration](https://sshuaichai.github.io/Maskrcnn_RibFrac/maskrcnn_ribfrac/assets/index.html)
 
-We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model. However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this. 🚀
+🚀 We have also conducted experiments on rib positioning, but it is not yet perfect. We have achieved good results through the fusion prediction of the positioning model and the fracture model. However, the rib area on both sides of the spine has not yet been well identified and detected. We will further improve this. 
 
 ## 📁 Project Structure
 Maskrcnn_RibFrac\
@@ -23,7 +23,7 @@ Maskrcnn_RibFrac\
     └── utils : Utility functions  
 
 First, create and activate a virtual environment:  
-It is recommended to use a conda environment with `python3.9`. 🐍
+It is recommended to use a conda environment with 🐍 `python3.9`. 
 
 # 🔧 Usage
 ## 📦 Install Required Packages
@@ -88,7 +88,7 @@ b. Generate 2D slices
 ```bash
 python data/Ribfrac_dataset.py --data-path data/Dataset510_RibFrac_preprocess --output-dir data/COCO_Rib2020_Ribfrac_v2
 ```
-Some Warning⚠️: will be printed during the run. Ignore it. This is because we are checking the data and deleting the mismatched slices and label information.
+⚠️ Some Warning: will be printed during the run. Ignore it. This is because we are checking the data and deleting the mismatched slices and label information.
 
 This will generate our rib fracture 2d slices under our [data] folder, named COCO_Rib2020_Ribfrac_v2, with the following structure:
 
@@ -125,7 +125,7 @@ To train the MaskRCNN_RibFrac model, run the following command in the terminal:
 ```bash
 python run_maskrcnn/train_RIBFrac.py --data-path <image_path> --output-dir "save_weights_RibFrac" --num-classes 1 --batch_size 16 --epochs 300 --lr 0.01 --momentum 0.9 --weight-decay 1e-4  --validation-frequency 1 --patience 50 --delta 0.001 --lr-scheduler "StepLR" --step-size 50 --lr-gamma 0.33 --amp True
 ```
-This will generate the [save_weights_RibFrac] folder containing det, seg, and tensorboard_logs subfolders to monitor all metrics during the training process.📈
+This will generate the [save_weights_RibFrac] folder containing det, seg, and tensorboard_logs subfolders to monitor all metrics during the training 📈 process.
 
 
 If you want to train a different model architecture, find the corresponding architecture and modify it (prediction and evaluation scripts are the same). We have configured all architectures; you only need to comment out the unused architectures and select the desired one. For example:
