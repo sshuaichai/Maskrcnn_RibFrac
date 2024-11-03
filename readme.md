@@ -159,7 +159,7 @@ python run_maskrcnn/validation_RIBFrac.py --device cuda --num-classes 1 --data-p
 
 This will generate the [det_record_mAP.txt] and [seg_record_mAP.txt] files.
 
-Model training process：
+🏆 Model training result：
 - Bbox：
 ![det_metrics_comparison.png](maskrcnn_ribfrac/assets/det_metrics_comparison.png)
 - Mask：
@@ -169,6 +169,12 @@ Model training process：
 For example:
 ![visualized_samples.png](maskrcnn_ribfrac/assets/visualized_samples.png)
 
----
 
-** Reference code： https://github.com/WZMIAOMIAO/deep-learning-for-image-processing/tree/master/pytorch_object_detection/mask_rcnn **
+## 🙏 Acknowledgements
+
+- We acknowledge all the authors of the employed public datasets, allowing the community to use these valuable resources for research purposes. 
+- Thanks to the open-source of the following projects:
+  - [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) 
+  - [OmniXAI](https://github.com/salesforce/OmniXAI)
+  - [mask_rcnn](https://github.com/WZMIAOMIAO/deep-learning-for-image-processing/tree/master/pytorch_object_detection/mask_rcnn) 
+  - [Zetane Viewer](https://github.com/zetane/viewer)
