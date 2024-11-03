@@ -1,4 +1,4 @@
-# 🌟 MaskRCNN Rib Fracture Detection And Segmentation
+# 🌟 Mask R-CNN for Rib Fractures Prediction on CT images with Interpretability and Chatgpt-based Structured Outcomes
 
 <img src="maskrcnn_ribfrac/assets/title.png" alt="" width="1200" height="" />
 
