@@ -139,20 +139,7 @@ def resnet50_fpn_backbone(pretrain_path="",
                           trainable_layers=3,
                           returned_layers=None,
                           extra_blocks=None):
-    """
-    搭建resnet50_fpn——backbone
-    Args:
-        pretrain_path: resnet50的预训练权重，如果不使用就默认为空
-        norm_layer: 默认是nn.BatchNorm2d，如果GPU显存很小，batch_size不能设置很大，
-                    建议将norm_layer设置成FrozenBatchNorm2d(默认是nn.BatchNorm2d)
-                    (https://download.pytorch.org/models/resnet50-0676ba61.pth)
-        trainable_layers: 指定训练哪些层结构
-        returned_layers: 指定哪些层的输出需要返回
-        extra_blocks: 在输出的特征层基础上额外添加的层结构
-
-    Returns:
-
-    """
+  
     resnet_backbone = ResNet(Bottleneck, [3, 4, 6, 3], #ResNet101 (Bottleneck, [3, 4, 23, 3],
                              include_top=False,
                              norm_layer=norm_layer)
@@ -204,20 +191,7 @@ def resnet101_fpn_backbone(pretrain_path="",
                           trainable_layers=3,
                           returned_layers=None,
                           extra_blocks=None):
-    """
-    搭建resnet50_fpn——backbone
-    Args:
-        pretrain_path: resnet101的预训练权重，如果不使用就默认为空
-        norm_layer: 默认是nn.BatchNorm2d，如果GPU显存很小，batch_size不能设置很大，
-                    建议将norm_layer设置成FrozenBatchNorm2d(默认是nn.BatchNorm2d)
-                    (https://download.pytorch.org/models/resnet101-63fe2227.pth)
-        trainable_layers: 指定训练哪些层结构
-        returned_layers: 指定哪些层的输出需要返回
-        extra_blocks: 在输出的特征层基础上额外添加的层结构
-
-    Returns:
-
-    """
+    
     resnet_backbone = ResNet(Bottleneck, [3, 4, 23, 3], #ResNet101 (Bottleneck, [3, 4, 23, 3],
                              include_top=False,
                              norm_layer=norm_layer)
@@ -268,20 +242,7 @@ def resnet152_fpn_backbone(pretrain_path="",
                           trainable_layers=3,
                           returned_layers=None,
                           extra_blocks=None):
-    """
-    搭建resnet152_fpn——backbone
-    Args:
-        pretrain_path: resnet50的预训练权重，如果不使用就默认为空
-        norm_layer: 默认是nn.BatchNorm2d，如果GPU显存很小，batch_size不能设置很大，
-                    建议将norm_layer设置成FrozenBatchNorm2d(默认是nn.BatchNorm2d)
-                    (https://download.pytorch.org/models/resnet152-394f9c45.pth)
-        trainable_layers: 指定训练哪些层结构
-        returned_layers: 指定哪些层的输出需要返回
-        extra_blocks: 在输出的特征层基础上额外添加的层结构
-
-    Returns:
-
-    """
+    
     resnet_backbone = ResNet(Bottleneck, [3, 8, 36, 3], #ResNet152 (Bottleneck, [3, 8, 36, 3],
                              include_top=False,
                              norm_layer=norm_layer)
