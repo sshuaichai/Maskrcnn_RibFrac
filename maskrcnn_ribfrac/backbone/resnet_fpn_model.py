@@ -139,8 +139,21 @@ def resnet50_fpn_backbone(pretrain_path="",
                           trainable_layers=3,
                           returned_layers=None,
                           extra_blocks=None):
-  
-    resnet_backbone = ResNet(Bottleneck, [3, 4, 6, 3], #ResNet101 (Bottleneck, [3, 4, 23, 3],
+    """
+    Build a resnet50_fpn backbone.
+    Args:
+        pretrain_path: Pretrained weights for resnet50, empty by default if not used.
+        norm_layer: Default is nn.BatchNorm2d. If the GPU has limited memory and the batch size cannot be set large,
+                    it is recommended to use FrozenBatchNorm2d (default is nn.BatchNorm2d).
+                    (https://download.pytorch.org/models/resnet50-0676ba61.pth)
+        trainable_layers: Specifies which layers to train.
+        returned_layers: Specifies which layers' outputs need to be returned.
+        extra_blocks: Additional layers to be added on top of the output feature layers.
+
+    Returns:
+
+    """
+    resnet_backbone = ResNet(Bottleneck, [3, 4, 6, 3],  # ResNet101 (Bottleneck, [3, 4, 23, 3])
                              include_top=False,
                              norm_layer=norm_layer)
 
@@ -148,21 +161,21 @@ def resnet50_fpn_backbone(pretrain_path="",
         overwrite_eps(resnet_backbone, 0.0)
 
     if pretrain_path != "":
-        assert os.path.exists(pretrain_path), "{} is not exist.".format(pretrain_path)
-        # 载入预训练权重
+        assert os.path.exists(pretrain_path), "{} does not exist.".format(pretrain_path)
+        # Load pretrained weights
         print(resnet_backbone.load_state_dict(torch.load(pretrain_path), strict=False))
 
-    # select layers that wont be frozen
+    # Select layers that won't be frozen
     assert 0 <= trainable_layers <= 5
     layers_to_train = ['layer4', 'layer3', 'layer2', 'layer1', 'conv1'][:trainable_layers]
 
-    # 如果要训练所有层结构的话，不要忘了conv1后还有一个bn1
+    # If training all layers, don't forget that there is a bn1 layer after conv1
     if trainable_layers == 5:
         layers_to_train.append("bn1")
 
-    # freeze layers
+    # Freeze layers
     for name, parameter in resnet_backbone.named_parameters():
-        # 只训练不在layers_to_train列表中的层结构
+        # Only train layers not in the layers_to_train list
         if all([not name.startswith(layer) for layer in layers_to_train]):
             parameter.requires_grad_(False)
 
@@ -171,17 +184,17 @@ def resnet50_fpn_backbone(pretrain_path="",
 
     if returned_layers is None:
         returned_layers = [1, 2, 3, 4]
-    # 返回的特征层个数肯定大于0小于5
+    # Ensure the number of returned feature layers is greater than 0 and less than 5
     assert min(returned_layers) > 0 and max(returned_layers) < 5
 
-    # return_layers = {'layer1': '0', 'layer2': '1', 'layer3': '2', 'layer4': '3'}
+    # Return layers
     return_layers = {f'layer{k}': str(v) for v, k in enumerate(returned_layers)}
 
-    # in_channel 为layer4的输出特征矩阵channel = 2048
+    # in_channel for layer4's output feature map channel = 2048
     in_channels_stage2 = resnet_backbone.in_channel // 8  # 256
-    # 记录resnet50提供给fpn的每个特征层channel
+    # Record the channels of each feature layer provided to FPN by resnet50
     in_channels_list = [in_channels_stage2 * 2 ** (i - 1) for i in returned_layers]
-    # 通过fpn后得到的每个特征层的channel
+    # The output channels for each feature layer after FPN
     out_channels = 256
     return BackboneWithFPN(resnet_backbone, return_layers, in_channels_list, out_channels, extra_blocks=extra_blocks)
 
@@ -191,8 +204,21 @@ def resnet101_fpn_backbone(pretrain_path="",
                           trainable_layers=3,
                           returned_layers=None,
                           extra_blocks=None):
-    
-    resnet_backbone = ResNet(Bottleneck, [3, 4, 23, 3], #ResNet101 (Bottleneck, [3, 4, 23, 3],
+    """
+    Build a resnet101_fpn backbone.
+    Args:
+        pretrain_path: Pretrained weights for resnet101, empty by default if not used.
+        norm_layer: Default is nn.BatchNorm2d. If the GPU has limited memory and the batch size cannot be set large,
+                    it is recommended to use FrozenBatchNorm2d (default is nn.BatchNorm2d).
+                    (https://download.pytorch.org/models/resnet101-63fe2227.pth)
+        trainable_layers: Specifies which layers to train.
+        returned_layers: Specifies which layers' outputs need to be returned.
+        extra_blocks: Additional layers to be added on top of the output feature layers.
+
+    Returns:
+
+    """
+    resnet_backbone = ResNet(Bottleneck, [3, 4, 23, 3],  # ResNet101 (Bottleneck, [3, 4, 23, 3])
                              include_top=False,
                              norm_layer=norm_layer)
 
@@ -200,21 +226,21 @@ def resnet101_fpn_backbone(pretrain_path="",
         overwrite_eps(resnet_backbone, 0.0)
 
     if pretrain_path != "":
-        assert os.path.exists(pretrain_path), "{} is not exist.".format(pretrain_path)
-        # 载入预训练权重
+        assert os.path.exists(pretrain_path), "{} does not exist.".format(pretrain_path)
+        # Load pretrained weights
         print(resnet_backbone.load_state_dict(torch.load(pretrain_path), strict=False))
 
-    # select layers that wont be frozen
+    # Select layers that won't be frozen
     assert 0 <= trainable_layers <= 5
     layers_to_train = ['layer4', 'layer3', 'layer2', 'layer1', 'conv1'][:trainable_layers]
 
-    # 如果要训练所有层结构的话，不要忘了conv1后还有一个bn1
+    # If training all layers, don't forget that there is a bn1 layer after conv1
     if trainable_layers == 5:
         layers_to_train.append("bn1")
 
-    # freeze layers
+    # Freeze layers
     for name, parameter in resnet_backbone.named_parameters():
-        # 只训练不在layers_to_train列表中的层结构
+        # Only train layers not in the layers_to_train list
         if all([not name.startswith(layer) for layer in layers_to_train]):
             parameter.requires_grad_(False)
 
@@ -223,27 +249,41 @@ def resnet101_fpn_backbone(pretrain_path="",
 
     if returned_layers is None:
         returned_layers = [1, 2, 3, 4]
-    # 返回的特征层个数肯定大于0小于5
+    # Ensure the number of returned feature layers is greater than 0 and less than 5
     assert min(returned_layers) > 0 and max(returned_layers) < 5
 
-    # return_layers = {'layer1': '0', 'layer2': '1', 'layer3': '2', 'layer4': '3'}
+    # Return layers
     return_layers = {f'layer{k}': str(v) for v, k in enumerate(returned_layers)}
 
-    # in_channel 为layer4的输出特征矩阵channel = 2048
+    # in_channel for layer4's output feature map channel = 2048
     in_channels_stage2 = resnet_backbone.in_channel // 8  # 256
-    # 记录resnet50提供给fpn的每个特征层channel
+    # Record the channels of each feature layer provided to FPN by resnet101
     in_channels_list = [in_channels_stage2 * 2 ** (i - 1) for i in returned_layers]
-    # 通过fpn后得到的每个特征层的channel
+    # The output channels for each feature layer after FPN
     out_channels = 256
     return BackboneWithFPN(resnet_backbone, return_layers, in_channels_list, out_channels, extra_blocks=extra_blocks)
+
 
 def resnet152_fpn_backbone(pretrain_path="",
                           norm_layer=nn.BatchNorm2d,
                           trainable_layers=3,
                           returned_layers=None,
                           extra_blocks=None):
-    
-    resnet_backbone = ResNet(Bottleneck, [3, 8, 36, 3], #ResNet152 (Bottleneck, [3, 8, 36, 3],
+    """
+    Build a resnet152_fpn backbone.
+    Args:
+        pretrain_path: Pretrained weights for resnet152, empty by default if not used.
+        norm_layer: Default is nn.BatchNorm2d. If the GPU has limited memory and the batch size cannot be set large,
+                    it is recommended to use FrozenBatchNorm2d (default is nn.BatchNorm2d).
+                    (https://download.pytorch.org/models/resnet152-394f9c45.pth)
+        trainable_layers: Specifies which layers to train.
+        returned_layers: Specifies which layers' outputs need to be returned.
+        extra_blocks: Additional layers to be added on top of the output feature layers.
+
+    Returns:
+
+    """
+    resnet_backbone = ResNet(Bottleneck, [3, 8, 36, 3],  # ResNet152 (Bottleneck, [3, 8, 36, 3])
                              include_top=False,
                              norm_layer=norm_layer)
 
@@ -251,21 +291,21 @@ def resnet152_fpn_backbone(pretrain_path="",
         overwrite_eps(resnet_backbone, 0.0)
 
     if pretrain_path != "":
-        assert os.path.exists(pretrain_path), "{} is not exist.".format(pretrain_path)
-        # 载入预训练权重
+        assert os.path.exists(pretrain_path), "{} does not exist.".format(pretrain_path)
+        # Load pretrained weights
         print(resnet_backbone.load_state_dict(torch.load(pretrain_path), strict=False))
 
-    # select layers that wont be frozen
+    # Select layers that won't be frozen
     assert 0 <= trainable_layers <= 5
     layers_to_train = ['layer4', 'layer3', 'layer2', 'layer1', 'conv1'][:trainable_layers]
 
-    # 如果要训练所有层结构的话，不要忘了conv1后还有一个bn1
+    # If training all layers, don't forget that there is a bn1 layer after conv1
     if trainable_layers == 5:
         layers_to_train.append("bn1")
 
-    # freeze layers
+    # Freeze layers
     for name, parameter in resnet_backbone.named_parameters():
-        # 只训练不在layers_to_train列表中的层结构
+        # Only train layers not in the layers_to_train list
         if all([not name.startswith(layer) for layer in layers_to_train]):
             parameter.requires_grad_(False)
 
@@ -274,16 +314,16 @@ def resnet152_fpn_backbone(pretrain_path="",
 
     if returned_layers is None:
         returned_layers = [1, 2, 3, 4]
-    # 返回的特征层个数肯定大于0小于5
+    # Ensure the number of returned feature layers is greater than 0 and less than 5
     assert min(returned_layers) > 0 and max(returned_layers) < 5
 
-    # return_layers = {'layer1': '0', 'layer2': '1', 'layer3': '2', 'layer4': '3'}
+    # Return layers
     return_layers = {f'layer{k}': str(v) for v, k in enumerate(returned_layers)}
 
-    # in_channel 为layer4的输出特征矩阵channel = 2048
+    # in_channel for layer4's output feature map channel = 2048
     in_channels_stage2 = resnet_backbone.in_channel // 8  # 256
-    # 记录resnet50提供给fpn的每个特征层channel
+    # Record the channels of each feature layer provided to FPN by resnet152
     in_channels_list = [in_channels_stage2 * 2 ** (i - 1) for i in returned_layers]
-    # 通过fpn后得到的每个特征层的channel
+    # The output channels for each feature layer after FPN
     out_channels = 256
     return BackboneWithFPN(resnet_backbone, return_layers, in_channels_list, out_channels, extra_blocks=extra_blocks)
