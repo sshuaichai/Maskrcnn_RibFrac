@@ -169,6 +169,8 @@ This will generate the [det_record_mAP.txt] and [seg_record_mAP.txt] files.
 For example:
 ![visualized_samples.png](maskrcnn_ribfrac/assets/visualized_samples.png)
 
+## License
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgements
 
