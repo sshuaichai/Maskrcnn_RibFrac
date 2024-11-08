@@ -35,12 +35,17 @@ cd maskrcnn_ribfrac
 pip install -r requirements.txt
 ```
 
-# 📥 Download Dataset
+# 📥 Dataset links
+
+RibFrac Challenge:
+- [MICCAI 2020 RibFrac Challenge](https://ribfrac.grand-challenge.org/tasks/). 
+
 We use a large-scale rib fracture CT dataset, named the RibFrac dataset, as a benchmark for developing rib fracture detection, segmentation, and classification algorithms. 
-After free registration, you can access the public part of the RibFrac dataset through the RibFrac Challenge website https://ribfrac.grand-challenge.org/dataset/, which is the official challenge of MICCAI 2020. 
-The public dataset in this document is in 2D format, processed from the official 3D format. 
-Refer to the RibFrac Challenge website https://ribfrac.grand-challenge.org/tasks/ for more details. 
+After free registration, you can access the public part of the RibFrac dataset through the [RibFrac Challenge dataset](https://ribfrac.grand-challenge.org/dataset/), which is the official challenge of MICCAI 2020. 
+The public dataset in this document is in 2D format, processed from the official 3D format.
+
 Regarding external test datasets, if necessary, please contact the corresponding author.
+
 
 ## 📂 Prepare the dataset
 
