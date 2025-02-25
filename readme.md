@@ -1,5 +1,23 @@
 # 🌟 Mask R-CNN for Rib Fractures Prediction on CT images with Interpretability and Chatgpt-based Structured Outcomes
 
+📰 **News**  
+**[Feb 23, 2025]** We are excited to announce that our research titled **"Mask R-CNN for Predicting Rib Fractures on CT Images with Interpretability and ChatGPT-Based Structured Outcomes"** has been accepted for publication in *Expert Systems with Applications* (2025). This study introduces a novel deep learning approach for detecting rib fractures by combining both axial CT and CPR images, achieving over 97% accuracy. It also integrates ChatGPT for generating structured diagnostic reports, improving radiologists' workflow efficiency.
+
+```md
+@article{chai2025maskrcnn,  
+  title={Mask R-CNN for Predicting Rib Fractures on CT Images with Interpretability and ChatGPT-Based Structured Outcomes},  
+  author={Chai, Shuaishuai and Gao, Pan and Li, Ming and Jin, Liang},  
+  journal={Expert Systems with Applications},  
+  volume={127047},  
+  year={2025},  
+  publisher={Elsevier},  
+  doi={10.1016/j.eswa.2025.127047},  
+  url={https://doi.org/10.1016/j.eswa.2025.127047}  
+}
+```
+
+----
+
 <img src="maskrcnn_ribfrac/assets/title.png" alt="" width="1200" height="" />
 
 > 🦴 Rib Location Combined with Rib Fracture Detection
