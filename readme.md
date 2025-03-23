@@ -1,8 +1,8 @@
 # 🌟 Mask R-CNN for Rib Fractures Prediction on CT images with Interpretability and Chatgpt-based Structured Outcomes
 
-<div style="text-align: center;">
-  <img src="maskrcnn_ribfrac/assets/Snipaste_8.png" alt="" width="1000" height="" />
-</div>
+<p style="font-style: italics;" align="center">
+<img height=auto width=1000 src=https://github.com/sshuaichai/Maskrcnn_RibFrac/blob/master/maskrcnn_ribfrac/assets/Snipaste_8.png
+</p>
 
 # 📰 **News**  
 
